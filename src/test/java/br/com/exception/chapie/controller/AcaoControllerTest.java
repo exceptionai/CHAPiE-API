@@ -76,7 +76,7 @@ public class AcaoControllerTest {
     public void deveAtualizar() throws Exception  {
         mvc.perform(put("/acoes/2")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"nome\": \"Atualizar Procedimentos\",\"descricao\":\"Atualiza os procedimentos\"}"))
+                .content("{\"nome\": \"Atualizar Procedimentos\",\"descricao\":\"Atualiza os procedimentos\",\"ativo\":true}"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }

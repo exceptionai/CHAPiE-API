@@ -33,30 +33,26 @@ public class ExecucaoServiceTest {
 
     @Test
     public void testeInsertSemAcaoETeste() {
-        //DADO
         Execucao execucao = new Execucao();
         Acao acao = new Acao(1);
         execucao.setAcao(acao);
         Acao acaoRetorno = new Acao(1,true);
 
-        //QUANDO
-        Mockito.when(acaoService.findById(Mockito.anyInt())).thenReturn(acaoRetorno);
-        execucaoService.insert(execucao);
+        Mockito.when(acaoService.encontrarPeloId(Mockito.anyInt())).thenReturn(acaoRetorno);
+        execucaoService.inserir(execucao);
 
     }
 
 
     @Test(expected = ExecucaoException.class)
     public void testeInsertException() {
-        //DADO
         Execucao execucao = new Execucao();
         Acao acao = new Acao(1);
         execucao.setAcao(acao);
         Acao acaoRetorno = new Acao(1,false);
 
-        //QUANDO
-        Mockito.when(acaoService.findById(Mockito.anyInt())).thenReturn(acaoRetorno);
-        execucaoService.insert(execucao);
+        Mockito.when(acaoService.encontrarPeloId(Mockito.anyInt())).thenReturn(acaoRetorno);
+        execucaoService.inserir(execucao);
 
     }
 

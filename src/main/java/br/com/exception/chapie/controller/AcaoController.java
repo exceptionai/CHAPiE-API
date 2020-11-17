@@ -22,21 +22,21 @@ public class AcaoController {
     @GetMapping
     @ApiOperation(value = "Encontrar todas as Ações")
     public ResponseEntity<List<Acao>> findAll(){
-        List<Acao> acoes = acaoService.findAll();
+        List<Acao> acoes = acaoService.listarTodas();
         return ResponseEntity.ok().body(acoes);
     }
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Encontrar uma Ação por ID")
     public ResponseEntity<Acao> findById(@PathVariable Integer id){
-        Acao acao = acaoService.findById(id);
+        Acao acao = acaoService.encontrarPeloId(id);
         return ResponseEntity.ok().body(acao);
     }
 
     @PostMapping()
     @ApiOperation(value = "Salvar uma determinada Ação")
     public ResponseEntity<Acao> insert(@Valid @RequestBody Acao acao){
-        Acao acaoUpdated = acaoService.insert(acao);
+        Acao acaoUpdated = acaoService.inserir(acao);
         URI localizacao = ServletUriComponentsBuilder
                             .fromCurrentRequest()
                             .path("{/id}")
@@ -47,15 +47,15 @@ public class AcaoController {
     @DeleteMapping(value = "/{id}")
     @ApiOperation(value = "Remove uma Ação a partir de um determinado ID")
     public ResponseEntity delete(@PathVariable Integer id){
-        Acao acao = acaoService.findById(id);
-        acaoService.delete(id);
+        Acao acao = acaoService.encontrarPeloId(id);
+        acaoService.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping(value = "/{id}")
     @ApiOperation(value = "Atualiza uma determinada Ação")
     public ResponseEntity<Acao> update(@Valid @RequestBody Acao acao, @PathVariable Integer id){
-        Acao acaoUpdated = acaoService.update(acao,id);
+        Acao acaoUpdated = acaoService.atualizar(acao,id);
         return ResponseEntity.ok().body(acaoUpdated);
     }
 

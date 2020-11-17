@@ -19,6 +19,8 @@ import java.util.List;
 public class RestExceptionHandler {
 
     private static final String ERRO_INESPERADO = "Um erro inesperado aconteceu, contate o suporte em contato@exception.com.br";
+    private static final String ACAO_ERRO = "Ocorreu um erro ao operar com as Ações";
+    private static final String EXECUCAO_ERRO = "Ocorreu um erro ao operar com as Execuções";
     private static final String RECURSO_NAO_ENCONTRADO = "Recurso não encontrado";
     private static final String JSON_INVALIDO = "Json inválido";
     private static final String METODO_NAO_SUPORTADO = "Método não suportado";
@@ -29,6 +31,18 @@ public class RestExceptionHandler {
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public RespostaException handleException(HttpServletRequest request, Exception exception){
         return new RespostaException(request, ERRO_INESPERADO, exception.getMessage());
+    }
+
+    @ExceptionHandler({AcaoException.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public RespostaException handleAcaoException(HttpServletRequest request, Exception exception){
+        return new RespostaException(request, ACAO_ERRO, exception.getMessage());
+    }
+
+    @ExceptionHandler({ExecucaoException.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public RespostaException handleExecucaoException(HttpServletRequest request, Exception exception){
+        return new RespostaException(request, EXECUCAO_ERRO, exception.getMessage());
     }
 
     @ExceptionHandler({NoHandlerFoundException.class,ObjetoNaoEncontradoException.class})

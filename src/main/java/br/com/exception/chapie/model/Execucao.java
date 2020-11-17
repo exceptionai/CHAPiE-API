@@ -25,6 +25,7 @@ public class Execucao implements Serializable {
 
     @Column(name = "DATA_EXECUCAO")
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
     private Date dataExecucao;
 
     public Integer getId() {

@@ -40,7 +40,7 @@ public class ExecucaoControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("{\"id\":2,\"acao\":{\"id\":2,\"nome\":\"Identificar erros\",\"descricao\":\"identifica se possui erros\",\"ativo\":true},\"dataExecucao\":\"2020-11-12T02:37:16.134+0000\"}"));
+                .andExpect(content().string("{\"id\":2,\"acao\":{\"id\":2,\"nome\":\"Identificar erros\",\"descricao\":\"identifica se possui erros\",\"ativo\":true},\"dataExecucao\":\"2020-11-12T15:37:16.000+0000\"}"));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class ExecucaoControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{" +"\"acao\": {" +
                         "        \"id\": 2" +
-                        "    }" +
+                        "    },\"dataExecucao\":\"2020-11-12T02:37:16.134+0000\"" +
                         "}"))
                 .andDo(print())
                 .andExpect(status().isCreated())
@@ -58,7 +58,7 @@ public class ExecucaoControllerTest {
     }
 
     @Test
-    @DisplayName("Deve deletar uma ação pelo id e retornar status 204")
+    @DisplayName("Deve deletar uma execução pelo id e retornar status 204")
     public void deveDeletar() throws Exception  {
         mvc.perform(delete("/execucoes/1")
                 .contentType(MediaType.APPLICATION_JSON))
@@ -66,7 +66,7 @@ public class ExecucaoControllerTest {
     }
 
     @Test
-    @DisplayName("Deve atualizar uma ação pelo id e retornar status 200")
+    @DisplayName("Deve atualizar uma execução pelo id e retornar status 200")
     public void deveAtualizar() throws Exception  {
         mvc.perform(put("/execucoes/3")
                 .contentType(MediaType.APPLICATION_JSON)

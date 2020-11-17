@@ -18,16 +18,16 @@ public class AcaoService {
     @Autowired
     AcaoRepository repository;
 
-    public List<Acao> findAll(){
+    public List<Acao> listarTodas(){
         return repository.findAll();
     }
 
-    public Acao findById(Integer id){
+    public Acao encontrarPeloId(Integer id){
         return repository.findById(id).orElseThrow(()-> new ObjetoNaoEncontradoException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Acao.class.getName()));
     }
 
-    public Acao insert(Acao acao) {
+    public Acao inserir(Acao acao) {
         acao.setId(null);
         if(acao.getNome().length() > 40){
             throw new AcaoException("O nome da ação deve conter no máximo 40 caracteres");
@@ -39,12 +39,12 @@ public class AcaoService {
     }
 
 
-    public Acao update(Acao acao, Integer id){
+    public Acao atualizar(Acao acao, Integer id){
         acao.setId(id);
         return repository.save(acao);
     }
 
-    public void delete(Integer id){
+    public void remover(Integer id){
         try{
             repository.deleteById(id);
         }catch(DataIntegrityViolationException e){

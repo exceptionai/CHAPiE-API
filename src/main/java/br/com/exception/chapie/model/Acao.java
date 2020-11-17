@@ -39,6 +39,7 @@ public class Acao  implements Serializable {
     @OneToMany(mappedBy="acao")
     private List<Execucao> execucao;
 
+    @NotNull
     private Boolean ativo;
     
     

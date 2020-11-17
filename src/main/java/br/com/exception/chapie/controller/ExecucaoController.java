@@ -22,21 +22,21 @@ public class ExecucaoController {
     @GetMapping
     @ApiOperation(value = "Lista todas as Execuções")
     public ResponseEntity<List<Execucao>> findAll(){
-        List<Execucao> execucoes = execucaoService.findAll();
+        List<Execucao> execucoes = execucaoService.listarTodos();
         return ResponseEntity.ok().body(execucoes);
     }
 
     @GetMapping(value = "/{id}")
     @ApiOperation(value = "Lista uma determinada Execução por ID")
     public ResponseEntity<Execucao> findById(@PathVariable Integer id){
-        Execucao execucao = execucaoService.findById(id);
+        Execucao execucao = execucaoService.encontrarPeloId(id);
         return ResponseEntity.ok().body(execucao);
     }
 
     @PostMapping()
     @ApiOperation(value = "Salva uma Execução")
     public ResponseEntity<Execucao> insert(@Valid @RequestBody Execucao execucao){
-        Execucao execucaoUpdated = execucaoService.insert(execucao);
+        Execucao execucaoUpdated = execucaoService.inserir(execucao);
         URI localizacao = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("{/id}")
@@ -47,15 +47,15 @@ public class ExecucaoController {
     @DeleteMapping(value = "/{id}")
     @ApiOperation(value = "Remove uma Execução a partir de um ID")
     public ResponseEntity delete(@PathVariable Integer id){
-        Execucao execucao = execucaoService.findById(id);
-        execucaoService.delete(id);
+        Execucao execucao = execucaoService.encontrarPeloId(id);
+        execucaoService.remover(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping(value = "/{id}")
     @ApiOperation(value = "Atualiza uma determinada Execução")
     public ResponseEntity<Execucao> update(@Valid @RequestBody Execucao execucao,@PathVariable Integer id){
-        Execucao execucaoUpdated = execucaoService.update(execucao,id);
+        Execucao execucaoUpdated = execucaoService.atualizar(execucao,id);
         return ResponseEntity.ok().body(execucaoUpdated);
     }
 
