@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "1cf98611-28dd-4847-a75e-8e12f3a35be0",
+		"name": "CHAPPiE",
+		"description": "API para controle de ações e execuções do robô CHAPPiE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ações",
+			"item": [
+				{
+					"name": "Criar Ação",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Atualizar o sistema operacional\",\r\n    \"descricao\": \"Atualiza o sistema operacional do chappie com os mais novos recursos\",\r\n    \"ativo\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/exception/acoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"acoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar ações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exception/acoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"acoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Ação",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Salvar inocentes\",\r\n    \"descricao\": \"CHAPPiE deve salvar as pessoas inocentes em perigo\",\r\n    \"ativo\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/exception/acoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"acoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover ação",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exception/acoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"acoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Ação por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exception/acoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"acoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Execucuções",
+			"item": [
+				{
+					"name": "Criar Execução",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"acao\": {\r\n        \"id\": 2\r\n    },\r\n    \"dataExecucao\": \"2020-11-16T23:20:16.272Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/exception/execucoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"execucoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Execuções",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exception/execucoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"execucoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Execução",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"acao\": {\r\n        \"id\": 1\r\n    },\r\n    \"dataExecucao\": \"2020-12-16T23:20:16.272Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/exception/execucoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"execucoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Execução",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exception/execucoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"execucoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Execução por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/exception/execucoes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"exception",
+								"execucoes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
